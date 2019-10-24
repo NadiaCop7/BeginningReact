@@ -2,7 +2,9 @@
 Every bit of react you encounter will be made up of those basic JS building blocks. Lets dissect a React component and then blend the two!
 
 
-React CLASS component. With the introduction of hooks, we will be able to simplify components to be functional and still use and change state (useState, useReducer). Our code base still heavily contains class components, so we need to know how to read them. 
+#### React CLASS component
+
+With the introduction of hooks, we will be able to simplify components to be functional and still use and change state (useState, useReducer). Our code base still heavily contains class components, so we need to know how to read them. 
 
 here is a class component skeleton:
 
@@ -34,9 +36,9 @@ const stringThing = “I am a string”;   <———— organ, provides somethi
 };
 ```
 
-You can also create variables, functions, etc within the render method, but keep in mind if you need it to be accessible in other functions etc, you should put it above the render method and call it with “this” when it is needed.
+This area above the render method and just under the class initialization is where we will have our prop type decalrations. In our class components we assign each prop a "type" aka data type, and make sure we are importing PropTypes near the top of the file. We will take another look at props in a bit. You can also create variables, functions, etc *inside* the render method, but keep in mind if you need it to be accessible in other functions etc, it should go above the render method and then called with “this” when it is needed.
 
-A note about `this`. The `this` keyword is used throughout our JS files and goes away with typescript for the most part. The simplest way to understand this, is that “this” is data that lives in this document, but outside of its respective scope. A function that is being called outside of its scope, say,  in the render/return,  it will look like the arrow below:
+A note about `this`. The `this` keyword is used throughout our JS files and is not as prevalent with typescript, though still exists. The simplest way to understand this, is that “this” is data that lives in this document, but outside of its respective scope. A function that is being called outside of its scope, say,  in the render/return,  it will look like the arrow below:
 
 ```
 class SomeComponent extends React.Component {
@@ -83,7 +85,7 @@ class SomeComponent extends React.Component {
 };
 ```
 
-Are javascript. You CAN return some jsx, but we will get to that later.  Now, everything in the return of the render:
+Are javascript. You CAN return some jsx as will be shown later.  Now, everything in the return of the render:
 
 ```
 class SomeComponent extends React.Component {
@@ -94,7 +96,7 @@ class SomeComponent extends React.Component {
 };
 ```
 
-is jsx, and looks and behaves a lot like html. Here you will use all your favorite html tags, and then some! `<div/>`, `<h1/>`, `<img/>` etc. and of course other components as tags, `<Page/>` `<LeadForm/>` for example. You can add attributes like you do in regular html…classname, id, etc…we will get more into detail on this in a bit. Also, this is the area that has special syntax, most notably curly braces to do the logical stuff or else it will render the view…. quite literally.
+is called jsx, and looks and behaves a lot like html. Here you will use all your favorite html tags, and then some! `<div/>`, `<h1/>`, `<img/>` etc. and of course other components as tags, `<Page/>` `<LeadForm/>` for example. You can add attributes like you do in regular html…classname, id, etc…we will get more into detail on this in a bit. Also, this is the area that has special syntax, most notably curly braces to do the logical stuff or render a view…. quite literally.
 
 `<div>5 + 5</div>` will render 5 + 5 on your browser.
 
@@ -115,7 +117,7 @@ What would we be without the things that make us unique? Like us, jsx tags have 
  ```
 
 
-`<PropertyDetails/>` is a react component that is being instantiated by using it in “html tag” form with some attributes. One you definitely know, `className`, is a regular attribute html uses, and it is NO different when used for styling on a react component. You can add an `img=“”` or `src=“”` attribute the same way, but the most common use of attributes on a jsx-html style instantiated component is to pass data between it to another component via… you’ve heard it a 1000 times, props! In the above example -the attributes called property, isLDP, and snipe are all being passed data as props. This makes sense if you consider how an object has key-value pairs, aka properties and their values. If you want another component to be able to use ones information, you can pass that data via props.
+`<PropertyDetails/>` is a react component that is being instantiated by using it in “html tag” form with some attributes. One you definitely know, `className`, is a regular attribute html uses, and it is NO different when used for styling on a react component. You can add an `img=“”` or `src=“”` attribute the same way, but the most common use of attributes on a jsx-html style instantiated component is to pass data between it to another component via… you’ve heard it a 1000 times: props! In the above example -the attributes called `property`, `isLDP`, and `snipe` are all being passed data as props. This makes sense if you consider how an object has key-value pairs, aka properties and their values. If you want another component to be able to use ones information, you can pass that data via props.
 
 Lets break this down!
 
@@ -136,7 +138,7 @@ you can get more specific and deeper into the object with dot syntax. Lets say y
 
 **Using JSX outside of the return()**
 
-Now you know how I mentioned earlier that all code before the render is simple  JS variables and functions. Well cool story bro…on a file.jsx or file.tsx, you can return jsx in a  function! Reminder, jsx is the html looking stuff. 
+Now you know how I mentioned earlier that all code before the render is simple JS variables and functions. Well cool story bro…  on a file.jsx or file.tsx, you can return jsx in a function! Reminder, jsx is the html looking stuff. 
 
 Example: 
 
@@ -158,5 +160,5 @@ renderCarouselPageButton(direction, handleClickFunc) {
   }
   ```
 
-Examine the above and notice it is a named function with conditional logic, and returns jsx! It is no different than when you return on any other languages function. Here we return 2  instances of the Icon component in a div, with the curly braces giving us back data.
+Examine the above and notice it is a named function with conditional logic, and returns jsx! It is no different than when you return on any other languages function. Here we return 2 instances of the Icon component in a div, with the curly braces giving us back data.
 
